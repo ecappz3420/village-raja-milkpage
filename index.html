@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Village Raja</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container-fluid position-fixed d-none 100vw" id="loading-animation">
+    <div class="line"></div>
+    <div class="loader">
+      <div class="one-loader first">
+       <div class="v-line first-line"></div>
+       <div class="circle first-circle"></div>
+      </div>
+      <div class="one-loader">
+       <div class="v-line middle-line"></div>
+       <div class="circle middle-circle"></div>
+      </div>
+      <div class="one-loader">
+       <div class="v-line middle-line"></div>
+       <div class="circle middle-circle"></div>
+      </div>
+      <div class="one-loader">
+       <div class="v-line middle-line"></div>
+       <div class="circle middle-circle"></div>
+      </div>
+      <div class="one-loader last">
+       <div class="v-line last-line"></div>
+       <div class="circle last-circle"></div>
+      </div>
+     </div>
+    <h3 class="fw-bold text-white">Creating Order...</h3>
+  </div>
+  <div class="vr-container" style="height: 100vh; font-family: 'Montserrat', sans-serif;">
+    <div id="overlay" class="d-none"></div>
+    <div class="container-one">
+      <nav class="navbar dark">
+        <ul class="navbar-nav mx-3 mb-2 mb-lg-0 d-flex justify-content-between w-100">
+          <li class="nav-item d-flex align-items-center"><a class="navbar-brand text-white fw-bold bubblegum-sans-regular" href="#">Village Raja</a></li>
+          <li class="nav-item">
+            <form class="d-flex form-control rounded-pill bg-white" role="search">
+              <div class="bg-white p-1"><i class="bi bi-search"></i></div>
+              <input class="bg-white w-100 border-0" type="search" id="search-input" placeholder="Search"
+                aria-label="Search">
+            </form>
+          </li>
+          <li class="nav-item position-relative mx-4">
+            <div class="d-flex gap-4">
+              <div class="cursor-pointer d-none" id="save-cartbtn">
+                <div class="text-white fs-3" id="save-icon"><i class="bi bi-floppy2"></i></div>
+              </div>
+              <div>
+                <div class="cursor-pointer cart-icon" data-bs-toggle="modal" data-bs-target="#mycart">
+                  <i class="bi bi-cart-check-fill fs-3 text-white"></i>
+                  <span class="badge text-bg-danger position-absolute cart-badge d-none rounded-circle px-2">4</span>
+                </div>
+                <div class="modal fade" id="mycart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cart</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <ul class="list-group">
+  
+                        </ul>
+                      </div>
+                      <div class="fw-bold text-secondary ms-3">Total</div>
+                      <div class="payment-summary">
+                        <div class="d-block">
+                          <div class="d-flex justify-content-between align-items-center mb-3 fw-bold">
+                            <div class="px-3">Item Total</div>
+                            <div class="px-3" id="grand-total">₹ 00.00</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="place-order">Place Order</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+  
+          </li>
+        </ul>
+      </nav>
+      <div class="h-100 dark">
+        <div class="main-card bg-white border-0 h-100">
+          <div class="container-fluid p-2"> 
+            <div class="row" id="product-card">
+              <!-- JS Data -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-two d-none">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="card mt-3 border-0 shadow-sm">
+          <div class="card-header" style="background: #ca48bf;">
+            <div class="fs-4 fw-bold text-white text-center">Payment Details</div>
+          </div>
+          <div class="card-body">
+            <form class="row">
+              <div class="mb-3">
+                <label for="amount" class="form-label">Amount Payable</label>
+                <input type="number" class="form-control" value="0.0" id="amount" disabled readonly>
+              </div>
+              <div class="mb-3">
+                <label for="payment-date" class="form-label">Payment Date</label>
+                <input type="date" class="form-control" id="payment-date" required>
+              </div>
+              <div class="col-12 mt-3">
+                <div class="d-flex justify-content-center gap-3">
+                  <button class="btn dark text-white" type="button" id="close-form">Back</button>
+                  <button class="btn dark text-white" type="button" id="create-order">Confirm Order</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="alert-lowstock" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="fw-bold">Alert</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This product is currently out of stock. We're working to restock it as soon as possible.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="order-created" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="fw-bold">Order Created</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Kindly clear your pending invoice amount to confirm your order
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal" id="close-order">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
