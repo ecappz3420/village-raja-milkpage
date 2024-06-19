@@ -720,7 +720,8 @@ ZOHO.CREATOR.init()
               "Total": sub_total,
               "Category": getItemZoho.data.Category.ID,
               "Milk_Deliver_Status" : getItemZoho.data.Category.display_value == "Milk" ? "Pending" : "",
-              "Approval_Status": getItemZoho.data.Category.display_value == "Milk" ? "Waiting For Approval" : "Approval Not Required"
+              "Approval_Status": getItemZoho.data.Category.display_value == "Milk" ? "Waiting For Approval" : "Approval Not Required",
+              "Customer_Milk_Update_Status" : getItemZoho.data.Category.display_value == "Milk" ? "Pending" : ""
             }
           };
 
