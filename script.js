@@ -1,3 +1,16 @@
+const checkAccessTime = ()=>{
+  const now = new Date();
+  const currentHour = now.getHours();
+  const weekDay = now.getDay();
+  let accessAllowed;
+  if (currentHour >= 18 && currentHour <= 24 || currentHour >= 0 && currentHour <= 8 && weekDay != 2 && weekDay != 3 && weekDay != 6) {
+    accessAllowed = true; 
+}
+if (!accessAllowed) {
+    document.body.innerHTML = "<div class='text-center'><h3 class='fw-bold'>Access Denied</h3><p>This page is only accessible only on Sunday, Monday, Thursday and Friday from 6PM to 9AM</p></div>";
+}
+}
+window.onload = checkAccessTime;
 ZOHO.CREATOR.init()
   .then((data) => {
     const createElementID = (item_id, type) => {
