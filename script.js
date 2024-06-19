@@ -1,13 +1,12 @@
 const checkAccessTime = ()=>{
   const now = new Date();
   const currentHour = now.getHours();
-  const weekDay = now.getDay();
   let accessAllowed;
-  if (currentHour >= 18 && currentHour <= 24 || currentHour >= 0 && currentHour <= 8 && weekDay != 2 && weekDay != 3 && weekDay != 6) {
+  if (currentHour >= 18 && currentHour <= 24 || currentHour >= 0 && currentHour <= 8) {
     accessAllowed = true; 
 }
 if (!accessAllowed) {
-    document.body.innerHTML = "<div class='text-center'><h3 class='fw-bold'>Access Denied</h3><p>This page is only accessible only on Sunday, Monday, Thursday and Friday from 6PM to 9AM</p></div>";
+    document.body.innerHTML = "<div class='text-center'><h3 class='fw-bold'>Access Denied</h3><p>This page is only accessible only from 6PM to 9AM</p></div>";
 }
 }
 window.onload = checkAccessTime;
@@ -664,7 +663,8 @@ ZOHO.CREATOR.init()
           "Branch_Name": branch_id.ID,
           "Total": tot_amnt,
           "Invoice_No": inv_no.inv_no,
-          "Inv_No": inv_no.max_no
+          "Inv_No": inv_no.max_no,
+          "Milk_Order": true
         }
       }
       config = {
