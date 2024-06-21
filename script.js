@@ -2,11 +2,11 @@ const checkAccessTime = ()=>{
   const now = new Date();
   const currentHour = now.getHours();
   let accessAllowed;
-  if (currentHour >= 18 && currentHour <= 24 || currentHour >= 0 && currentHour <= 8) {
+  if (currentHour >= 7 && currentHour <= 14) {
     accessAllowed = true; 
 }
 if (!accessAllowed) {
-    document.body.innerHTML = "<div class='text-center'><h3 class='fw-bold'>Access Denied</h3><p>This page is only accessible only from 6PM to 9AM</p></div>";
+    document.body.innerHTML = "<div class='text-center'><h3 class='fw-bold'>Access Denied</h3><p>This page is only accessible only from 7AM to 1PM</p></div>";
 }
 }
 window.onload = checkAccessTime;
