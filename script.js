@@ -2,7 +2,7 @@ const checkAccessTime = ()=>{
   const now = new Date();
   const currentHour = now.getHours();
   let accessAllowed;
-  if (currentHour >= 7 && currentHour <= 14) {
+  if (currentHour >= 7 && currentHour <= 12) {
     accessAllowed = true; 
 }
 if (!accessAllowed) {
